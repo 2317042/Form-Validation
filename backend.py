@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Allow frontend to access
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -10,12 +11,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# In-memory "database" for demo
+# In-memory "database"
 users = {}
 
 @app.get("/")
 def root():
-    return {"message": "Login/Signup Backend is running!"}
+    return {"message": "Login/Signup Backend running!"}
 
 @app.post("/signup/{username}/{password}")
 def signup(username: str, password: str):
